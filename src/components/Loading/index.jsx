@@ -1,16 +1,19 @@
 import {Spin} from 'antd';
+import style from './index.css';
 
 export default props => {
+  console.log(33,props)
+  const { loading , delay=300 , size="default" , tip='' , children } = props;
   return (
     <>
       <Spin
-        delay={props.delay || 300} //闪烁
-        size={props.size || 'default'} //大小，small，default，large
-        tip={props.tip || ''} //描述文案
-        spinning={props.spinning}
-        style ={props.children?{}:{height:"100%",width:"100%",display:"flex",alignItems:"center",justifyContent:"center",minHeight:"100px"}}
+        delay={ delay  } //闪烁
+        size={ size } //大小，small，default，large
+        tip={ tip } //描述文案
+        spinning={ loading }
+        className={ style.container }
       >
-        {props.children}
+        { loading ? null : children }
       </Spin>
     </>
   );

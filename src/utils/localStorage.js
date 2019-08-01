@@ -1,13 +1,11 @@
-//设置localStorage
 export const setStore = (name, content) => {
-    if (!name) return;
+    if (!name) return;//设置localStorage
     if (typeof content !== 'string') {
         content = JSON.stringify (content);
     }
     window.localStorage.setItem (name, content);
 };
-//获取localStorage
-export const getStore = name => {
+export const getStore = name => {//获取localStorage
     if (!name) return;
     return window.localStorage.getItem (name);
-};
+}

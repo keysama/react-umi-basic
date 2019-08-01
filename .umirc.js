@@ -1,7 +1,7 @@
 
 // ref: https://umijs.org/config/
-import routes from '../src/router';
-import conifg from '../src/config';
+import routes from './src/router';
+import config from './src/config';
 
 export default {
   treeShaking: true,
@@ -23,12 +23,17 @@ export default {
           /components\//,
         ],
       },
+      dynamicImport : {
+        webpackChunkName : true,
+        loadingComponent : config.project.loadingComponent
+      },
+      title: config.project.defaultTitle
     }],
   ],
   routes: routes,
-  history : conifg.project.history,
-  base : conifg.project.base,
-  publicPath : conifg.project.publicPath,
-  hash : conifg.project.hash,
-  theme: conifg.project.theme
+  history : config.project.history,
+  base : config.project.base,
+  publicPath : config.project.publicPath,
+  hash : config.project.hash,
+  theme: config.project.theme
 }

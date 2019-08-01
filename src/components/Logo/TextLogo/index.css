@@ -1,0 +1,8 @@
+.container{
+    font-size: 22px;
+    color: #fff;
+    text-align: center;
+    width:100%;
+    user-select: none;
+    cursor: pointer;
+}

@@ -1,7 +1,4 @@
-//一些常用的函数
-
-//时间戳转换
-export const timeFilter = (timeStemp) => {
+export const timeFilter = (timeStemp) => {//时间戳转换
     var now = new Date(parseInt(timeStemp)),
         y = now.getFullYear(),
         m = now.getMonth() + 1,
