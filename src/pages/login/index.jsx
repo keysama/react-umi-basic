@@ -1,10 +1,12 @@
 import styles from './index.css';
 
 
-export default props => {
+const LoginPage = props => {
   return (
     <div>
       login
     </div>
   );
 }
+
+export default LoginPage;

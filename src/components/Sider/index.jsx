@@ -4,11 +4,11 @@ import Link from 'umi/Link';
 
 const Sider = props => {
 
-    const { children,show,menuList } = props;
+    const { children,show,menuList,selectedKeys } = props;
 
     return (
         <Layout.Sider trigger={null} collapsible collapsed={show}>
-          <Menu theme="dark" mode="inline" defaultSelectedKeys={['1']}>
+          <Menu theme="dark" mode="inline" selectedKeys={selectedKeys}>
             {children}
             {
               menuList.map(item=>(

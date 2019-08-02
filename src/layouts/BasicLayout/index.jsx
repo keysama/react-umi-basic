@@ -43,10 +43,11 @@ class BasicLayout extends Component{
   render(){
     const { children } = this.props;
     const { loading } = this.state;
+    const pathName = this.props.location.pathname
     return (
       <Loading loading={loading}>
         <Layout className={style.container}>
-          <Sider menuList={menuList}>
+          <Sider menuList={menuList} selectedKeys={[pathName]}>
             <Logo>LOGO</Logo>
           </Sider>
           <Layout>
