@@ -8,9 +8,9 @@ export const setState_promise =  (context,props) => {//setState转换promise，�
         })
     })
 };
-export const dispatch_promise = (context,props) => {//dispatch转换promise，解决异步回掉太多的问题
+export const dispatch_promise = (func,props) => {//dispatch转换promise，解决异步回掉太多的问题
     return new Promise(resolve => {
-        context.props.dispatch ({
+        func ({
         ...props,
         callback:(data)=>{resolve(data)}
         });

@@ -2,7 +2,6 @@ import {Spin} from 'antd';
 import style from './index.css';
 
 export default props => {
-  console.log(33,props)
   const { loading , delay=300 , size="default" , tip='' , children } = props;
   return (
     <>

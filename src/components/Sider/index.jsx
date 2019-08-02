@@ -11,13 +11,14 @@ const Sider = props => {
           <Menu theme="dark" mode="inline" selectedKeys={selectedKeys}>
             {children}
             {
-              menuList.map(item=>(
-                  <Menu.Item key={ item.path }>
-                    <Link to={ item.path }>
-                      <Icon type={item.icon} />
-                      <span>{item.name}</span>
-                    </Link>
-                  </Menu.Item>
+              menuList.map(item => item.hidden ? null
+              :(
+                <Menu.Item key={ item.path }>
+                  <Link to={ item.path }>
+                    <Icon type={item.icon} />
+                    <span>{item.name}</span>
+                  </Link>
+                </Menu.Item>
               ))
             }
           </Menu>
