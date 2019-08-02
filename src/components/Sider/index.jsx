@@ -1,24 +1,25 @@
-import React,{ useState } from 'react';
+import React from 'react';
 import { Layout , Menu, Icon } from 'antd';
-
-import Logo from '@/components/Logo';
+import Link from 'umi/Link';
 
 const Sider = props => {
 
-    const { children,show } = props;
+    const { children,show,menuList } = props;
 
     return (
         <Layout.Sider trigger={null} collapsible collapsed={show}>
           <Menu theme="dark" mode="inline" defaultSelectedKeys={['1']}>
-            <Logo >LOGO</Logo>  
-            <Menu.Item key="2">
-              <Icon type="video-camera" />
-              <span>nav 2</span>
-            </Menu.Item>
-            <Menu.Item key="3">
-              <Icon type="upload" />
-              <span>nav 3</span>
-            </Menu.Item>
+            {children}
+            {
+              menuList.map(item=>(
+                  <Menu.Item key={ item.path }>
+                    <Link to={ item.path }>
+                      <Icon type={item.icon} />
+                      <span>{item.name}</span>
+                    </Link>
+                  </Menu.Item>
+              ))
+            }
           </Menu>
         </Layout.Sider>
     )

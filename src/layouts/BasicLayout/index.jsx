@@ -1,16 +1,17 @@
 import React, { Component } from 'react';
 import style from './index.css';
+import { Layout } from 'antd';
 
 import Header from '@/components/Header';
 import Sider from '@/components/Sider';
 import Loading from '@/components/Loading';
+import Logo from '@/components/Logo';
 
-import { Layout } from 'antd';
-
+import routes from '@/router';
 import { setTimeout_promise } from '@/utils';
 
 const { Content } = Layout;
-
+const menuList = routes[1].routes;
 // import Link from 'umi/link';
 // const { Header, Footer, Sider, Content } = Layout;
 
@@ -45,7 +46,9 @@ class BasicLayout extends Component{
     return (
       <Loading loading={loading}>
         <Layout className={style.container}>
-          <Sider />
+          <Sider menuList={menuList}>
+            <Logo>LOGO</Logo>
+          </Sider>
           <Layout>
             <Header />
             <Content className={style.content}>
