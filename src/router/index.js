@@ -24,6 +24,15 @@ module.exports = [
             component: './login',
             Routes : ['./src/router/CheckLogout'],
             title : 'login',
+            hidden : true
+        },
+        {
+          path: '/console',
+          name: 'console',
+          icon: 'control',
+          component: './console',
+          Routes : ['./src/router/CheckLogin'],
+          title : 'console',
         }
       ]
     },

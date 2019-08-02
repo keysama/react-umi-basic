@@ -2,7 +2,9 @@ import React from 'react';
 import styles from './index.css';
 import { useState } from 'react';
 import { Row,Col,Form } from 'antd';
-import { compose } from 'redux'; 
+import { compose } from 'redux';
+import { connect } from 'dva';
+import { dispatch_promise } from '@/utils';
 
 import Loading from '@/components/Loading';
 import TextInput from '@/components/formItems/TextInput';
@@ -13,12 +15,17 @@ const LoginPage = props => {
   const [ loading,setLoading ] = useState(false);
   const [ loading_login,setLoading_login ] = useState(false);
 
-  const handleSubmit = e => {
+  const handleSubmit = async e => {
     e.preventDefault();
-    props.form.validateFields((err, values) => {
-      if (!err) {
-        console.log('Received values of form: ', values);
-      }
+    props.form.validateFields(async (err, values) => {
+      await dispatch_promise(props.dispatch,{
+        type : 'authority/login',
+        payload : {
+          username : values.username,
+          password : values.password
+        }
+      })
+      
     });
   };
 
@@ -64,5 +71,6 @@ const LoginPage = props => {
 }
 
 export default compose(
-  Form.create({ name: 'login' })
+  Form.create({ name: 'login' }),
+  connect(null)
 )(LoginPage);

@@ -1,6 +1,13 @@
 import axios from './index';
 import {setTimeout_promise} from '@/utils/promise';
 
-export const login = (username, password) => {
-  return setTimeout_promise(5000,{id:123})
+export const login = (data) => {
+  return axios.post('api/authority/login',{
+    username:data.username,
+    password:data.password
+  })
+};
+
+export const getUserInfo = () => {
+  return axios.get('api/authority/userInfo/1')
 };

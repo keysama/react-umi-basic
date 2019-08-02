@@ -23,16 +23,18 @@ export default {
   },
   effects: {
     *login ({payload, callback}, {put}) {
-      const {data} = yield login (payload.username,payload.password);
+      const {data} = yield login ({...payload});
 
-      if (data.state == 0) {
-        alert (data.body);
+      console.log(data)
+
+      if (!data) {
         callback (false);
         return;
       }
 
       setStore('token',data.body)
       setStore('tokenTime',Date.now())
+
       yield put ({
         type: 'checkLogin'
       });
@@ -62,8 +64,10 @@ export default {
         const now = Date.now();
         if(token && token != 'null' && tokenTime && tokenTime != '' && now - tokenTime <= 1000 * 60 * 60 * 8){
             const {data} = yield getUserInfo ();
-            if(data.state !== 1){
-                setStore('token','');
+            if(!data){
+                yield put ({
+                    type: 'logout'
+                });
                 callback && callback(false);
             }else{
                 yield put ({

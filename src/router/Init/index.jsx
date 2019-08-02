@@ -1,6 +1,6 @@
 import React,{ Component } from 'react';
 import { connect } from 'dva';
-import { setTimeout_promise,setState_promise } from '@/utils';
+import { setTimeout_promise,setState_promise,dispatch_promise } from '@/utils';
 
 import Loading from '@/components/Loading';
 
@@ -18,7 +18,9 @@ class Init extends Component {
         })
         //这里做一些全局的初始化操作
 
-        await setTimeout_promise(2000)
+        await dispatch_promise(this.props.dispatch,{
+            type : 'authority/checkLogin'
+        })
         
         await setState_promise(this,{
             loading : false
